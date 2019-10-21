@@ -3,6 +3,7 @@
 
 Denarius Python RPC Daemon scripts  
 For python denarius RPC use https://github.com/buzzkillb/python-denariusrpc  
+sample site using grafana and influxdb https://denarius.pro
 
 #### python blockcount.py  
 ```
