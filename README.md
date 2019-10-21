@@ -37,4 +37,17 @@ Type of Work: proof-of-stake
 circulating: 6415473.60679883
 Fortunastakes: 357
 last block delta: 18  seconds
+```  
+#### python fswinner.py  
+```
+Winner of block 2524048 is DTaV7aXwUHNdACLTWmMJytu3ZsNqbB2VKV
+Winner of block 2524049 is D9XwyKehex5mC6cqgpBSUngHoDna3EoUD6
+Winner of block 2524050 is D5PaAPbNugjfHNnH6MbJKUWozBMRiL1N8q
+Winner of block 2524051 is DFjpnJLXEBDDCucffShyoYUQpQ7FTypHpx
+Winner of block 2524052 is DQ45tg4wnpRSJFWLnZecp5FfXXkQWUVtd4
+Winner of block 2524053 is DRMbq6mZre8J4gdLA1xGetr3gpG2e6uyBo
+Winner of block 2524054 is DAPGJ29kJYJyuXpE2ATGd6QPkwKUe9c9Eb
+Winner of block 2524055 is DGGrUsauDK3j1W4cdYFPxAZMPo8gfyucNB
+Winner of block 2524056 is D8jugMuwjk5ihzAyqfyrK7GuFS4sGeRu5x
+Winner of block 2524057 is D5tuxvswmzHtoms2r76XaVSs3Kc58H4xiQ
 ```
