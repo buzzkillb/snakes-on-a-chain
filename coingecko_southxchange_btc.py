@@ -1,5 +1,5 @@
-#crontab -e
-#* * * * * $(which python) /home/denarius/python/coingecko_southxchange_btc.py >> ~/cron.log 2>&1
+# crontab -e
+# * * * * * $(which python) /home/denarius/python/coingecko_southxchange_btc.py >> ~/cron.log 2>&1
 
 import time
 import sys
