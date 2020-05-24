@@ -25,8 +25,10 @@ measurement = "measurement"
 # location will be used as a grouping tag later
 blockchain = "denarius"
 
+# Get current epochtime
 ts = int(time.time())
 print(ts)
+# Convert epochtime to what Grafana appears to want
 grafanatime=ts * 1000000000
 print(grafanatime)
 
