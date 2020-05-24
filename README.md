@@ -54,3 +54,60 @@ Winner of block 2524055 is DGGrUsauDK3j1W4cdYFPxAZMPo8gfyucNB
 Winner of block 2524056 is D8jugMuwjk5ihzAyqfyrK7GuFS4sGeRu5x
 Winner of block 2524057 is D5tuxvswmzHtoms2r76XaVSs3Kc58H4xiQ
 ```
+#### Docker Setup 
+Create a data directory and also a userid to use for the grafana Docker container  
+```
+mkdir data # creates a folder for your data
+ID=$(id -u) # saves your user id in the ID variable
+```
+Docker run command with some environmental variables  
+```
+docker run -d \
+-p 3000:3000 \
+--name=grafana \
+--user $ID \
+--volume "$PWD/data:/var/lib/grafana" \
+-e "GF_INSTALL_PLUGINS=grafana-worldmap-panel" \
+-e "GF_USERS_VIEWERS_CAN_EDIT=false" \
+-e "GF_USERS_EDITORS_CAN_ADMIN=false" \
+-e "GF_USERS_ALLOW_SIGN_UP=false" \
+-e "GF_USERS_ALLOW_ORG_CREATE=false" \
+-e "GF_AUTH_DISABLE_LOGIN_FORM=false" \
+-e "GF_AUTH_ANONYMOUS_ENABLED=true" \
+-e "GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer" \
+-e "GF_ANALYTICS_GOOGLE_ANALYTICS_UA_ID=UA-157676508-1" \
+-e "GF_SERVER_DOMAIN=denarius.pro" \
+grafana/grafana
+```
+Check this is up by going to your IP:3000  
+Docker run command  
+```
+--name="influxdb" \
+-p 8086:8086 \
+-v /home/USERNAME/influxdb:/var/lib/influxdb \
+influxdb -config /etc/influxdb/influxdb.conf
+```
+To get into influxdb Docker container
+```
+docker exec -it influxdb /bin/bash
+```
+To get into influx cli  
+```
+influx
+```
+then run commands like  
+```
+show databases
+create database stats
+drop database stats
+```
+Check its all working  
+```
+docker stop grafana
+docker stop influxdb
+docker start grafana
+docker start influxdb
+docker stop grafana
+docker rm grafana
+rerun the full grafana run command
+```
