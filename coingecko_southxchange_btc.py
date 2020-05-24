@@ -1,4 +1,5 @@
-from denariusrpc.authproxy import AuthServiceProxy, JSONRPCException
+#crontab -e
+#* * * * * $(which python) /home/denarius/python/coingecko_southxchange_btc.py >> ~/cron.log 2>&1
 
 import time
 import sys
@@ -7,9 +8,6 @@ import urllib
 import json
 import requests
 from influxdb import InfluxDBClient
-
-# rpc_user and rpc_password are set in the denarius.conf file
-rpc_connection = AuthServiceProxy("http://%s:%s@127.0.0.1:32369"%("rpcuser", "rpcpassword"))
 
 # Configure InfluxDB connection variables
 host = "127.0.0.1" # My Ubuntu VPS
@@ -27,10 +25,10 @@ measurement = "measurement"
 # location will be used as a grouping tag later
 blockchain = "denarius"
 
-#iso = time.ctime()
-blockcount = rpc_connection.getblockcount()
-block = rpc_connection.getblockbynumber(blockcount)
-grafanatime = block['time'] * 1000000000
+ts = int(time.time())
+print(ts)
+grafanatime=ts * 1000000000
+print(grafanatime)
 
 coingecko_southx_url = requests.get('https://api.coingecko.com/api/v3/coins/denarius/tickers?exchange_ids=south_xchange')
 coingecko_southx_data = json.loads(coingecko_southx_url.text)
