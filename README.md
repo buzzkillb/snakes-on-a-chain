@@ -5,7 +5,9 @@ Denarius Python RPC Daemon scripts
 For python denarius RPC use https://github.com/buzzkillb/python-denariusrpc  
 sample site using grafana and influxdb https://denarius.pro  
 guide to setting up Denarius Python RPC, influxdb, grafana and putting current block height in the dashboard.  
-https://blockforums.org/topic/334-crypto-stats-using-grafana-influxdb-denarius-daemon/
+https://blockforums.org/topic/334-crypto-stats-using-grafana-influxdb-denarius-daemon/  
+guide to setting up to read Coingecko API  
+https://blockforums.org/topic/377-setting-up-grafana-and-influxdb-docker-containers-and-showing-some-apis-stats/
 
 #### python blockcount.py  
 ```
