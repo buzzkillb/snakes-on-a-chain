@@ -35,33 +35,18 @@ grafanatime=ts * 1000000000
 print(grafanatime)
 
 #chainz stakes
-staking = json.loads(requests.get("https://chainz.cryptoid.info/explorer/index.stakes.dws?coin=d").text)
-circulating = json.loads(requests.get("https://chainz.cryptoid.info/d/api.dws?q=circulating").text)
+#thanks kawaiicrypto!
 
-staking_remove_junk = json.dumps(staking).replace('null', '0')
-staking_removed = json.loads(staking_remove_junk)
-#print(staking_removed)
+# TODO: Add error handling
 
-#print(response)
-stakes = staking_removed['stakes']
-#print(stakes)
+staking = requests.get("https://chainz.cryptoid.info/explorer/index.stakes.dws?coin=d").json()
+circulating = float(requests.get("https://chainz.cryptoid.info/d/api.dws?q=circulating").text)
 
-#stakes = list(filter(None, stakes_list))
-#print(stakes)
-#print (stakes[0]['amount'])
+staking_sum = sum(map(lambda x: float(x['amount'] or 0), staking['stakes']))
 
-sum=0
-for x in stakes:
-
-  #print(x['amount'])
-  staking_amount= float(x['amount'])
-
-  #print(staking_amount)
-  sum = sum + staking_amount
-
-print(sum)
+print(staking_sum)
 print(circulating)
-percent_staking = (sum / circulating) * 100
+percent_staking = (staking_sum / circulating) * 100
 print(percent_staking)
 
 
@@ -74,7 +59,7 @@ data = [
               },
               "time": grafanatime,
               "fields": {
-                  "sum" : sum,
+                  "sum" : staking_sum,
                   "circulating" : circulating,
                   "percent_staking" : percent_staking
               }
