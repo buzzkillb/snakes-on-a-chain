@@ -38,14 +38,24 @@ print(grafanatime)
 staking = json.loads(requests.get("https://chainz.cryptoid.info/explorer/index.stakes.dws?coin=d").text)
 circulating = json.loads(requests.get("https://chainz.cryptoid.info/d/api.dws?q=circulating").text)
 
+staking_remove_junk = json.dumps(staking).replace('null', '0')
+staking_removed = json.loads(staking_remove_junk)
+#print(staking_removed)
+
 #print(response)
-stakes = staking['stakes']
+stakes = staking_removed['stakes']
+#print(stakes)
+
+#stakes = list(filter(None, stakes_list))
+#print(stakes)
 #print (stakes[0]['amount'])
 
 sum=0
 for x in stakes:
+
   #print(x['amount'])
   staking_amount= float(x['amount'])
+
   #print(staking_amount)
   sum = sum + staking_amount
 
